@@ -13,8 +13,13 @@
 | D6 | 12 | Touch OUT | Also SPI MISO; reclaimed as an input after the display starts |
 | RX | 3 | Audio filter input | I2S data out; Serial becomes transmit-only |
 | 3V3 | — | OLED VCC, Touch VDD | |
-| VIN | — | Speaker module VCC | 5 V from USB |
+| VIN | — | 5 V rail: USB-C breakout VBUS, speaker module VCC | Power enters here |
 | GND | — | All grounds | Common ground is required |
+
+**Power.** The USB-C breakout's VBUS feeds the 5 V rail (NodeMCU VIN and the speaker module); its CC
+pull-downs make C-to-C chargers supply 5 V. The NodeMCU's on-board 3.3 V regulator powers the OLED and the
+touch sensor from 3V3. The micro-USB port is only needed for flashing; the NodeMCU's diode between its USB
+5 V and VIN prevents back-feeding a connected computer.
 
 Free pins: D0 (GPIO16). Avoid D3/D4 (GPIO0/GPIO2): they must be high at boot.
 
@@ -40,6 +45,6 @@ the display supply.
 
 ## Volume
 
-1. The module's trimmer, if fitted.
+1. The module's trimmer (blue 3362 potentiometer).
 2. `MASTER_VOLUME` in `PetConfig.h` (0–0.7; above ~0.7 the 2nd-order modulator can become unstable).
 3. A smaller resistor to ground: 470 Ω ≈ −6.5 dB, 220 Ω ≈ −13 dB.

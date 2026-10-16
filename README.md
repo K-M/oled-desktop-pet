@@ -37,9 +37,10 @@ light up when you pet a hidden touch pad, and start sulking (and asking out loud
 | ESP8266 NodeMCU (ESP-12E) | Run at **160 MHz** |
 | 1.3" OLED, 128×64, **SH1106**, 4-wire SPI | 7-pin module |
 | Adafruit AT42QT1010 capacitive touch breakout ([#1374](https://www.adafruit.com/product/1374)) | Mounted against the inside of the lid |
-| LM386 speaker module | Powered from 5 V |
+| LM386 speaker module | On-board speaker and volume trimmer, 5 V |
+| USB-C breakout | 5 V power input |
 | 10 kΩ, 1 kΩ resistors; 22 nF ceramic; 100 µF electrolytic | Audio filter and amp decoupling |
-| 3D-printed enclosure | 70 × 74 × 48 mm; STL and Fusion source in [`hardware/enclosure`](hardware/enclosure) |
+| 3D-printed enclosure | 70 × 74 × 48 mm, PLA; M4 × 60 and M2.5 × 8 screws; STL and Fusion source in [`hardware/enclosure`](hardware/enclosure) |
 
 Full list: [`hardware/BOM.md`](hardware/BOM.md). Wiring and pin map: [`hardware/WIRING.md`](hardware/WIRING.md).
 

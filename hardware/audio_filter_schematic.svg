@@ -19,7 +19,7 @@
   <text x="115" y="96" class="lbl" text-anchor="middle" font-weight="bold">NodeMCU</text>
   <text x="115" y="114" class="dim" text-anchor="middle">ESP8266 @ 160 MHz</text>
   <text x="190" y="144" class="pin" text-anchor="end">RX / GPIO3</text>
-  <text x="190" y="334" class="pin" text-anchor="end">VIN (5 V USB)</text>
+  <text x="190" y="334" class="pin" text-anchor="end">VIN (5 V)</text>
   <text x="190" y="404" class="pin" text-anchor="end">GND</text>
 
   <!-- LM386 module -->
@@ -61,6 +61,7 @@
 
   <!-- VIN rail -->
   <path class="w" d="M200 330 H660"/>
+  <text x="215" y="350" class="dim">5 V from USB-C breakout (VBUS)</text>
   <!-- GND rail -->
   <path class="w" d="M200 400 H660"/>
   <!-- C2 decoupling across VIN/GND at module -->

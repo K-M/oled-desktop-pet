@@ -10,6 +10,22 @@
 
 The STLs are oriented as modelled: body open side up, lid outer face down. The body floor and the lid are 3 mm thick.
 
+## Print settings
+
+| Setting | Value |
+|---|---|
+| Printer / profile | Bambu Lab, "0.20mm Standard" preset |
+| Material | Generic PLA |
+| Layer height | 0.20 mm |
+| Infill | 20 % |
+
+## Fasteners
+
+| Use | Screw |
+|---|---|
+| Lid to body (4 corners, through the full body height) | M4 × 60 mm |
+| All electronics: NodeMCU, speaker module, USB-C breakout, touch sensor (4), display bezel (4) | M2.5 × 8 mm |
+
 ## Design notes
 
 - **Touch through the lid.** The AT42QT1010 board sits in a 27.5 × 20 mm pocket on the lid's inside face,
@@ -17,7 +33,6 @@ The STLs are oriented as modelled: body open side up, lid outer face down. The b
   against the pocket floor: an air gap kills sensitivity.
 - **Display window.** The OLED mounts from the front behind a screwed bezel (4 screws), with the
   window sized to the panel's active area.
-- **Fasteners.** 4 screws hold the lid to the body; 4 more hold the touch sensor to the lid.
-- **Rear wall.** Cut-outs for the NodeMCU's USB port (flashing and serial) and the power input.
+- **Rear wall.** Cut-outs for the NodeMCU's micro-USB (flashing and serial) and the USB-C power input.
 
 ![Rear view](../../docs/media/rear.jpg)
