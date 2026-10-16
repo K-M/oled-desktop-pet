@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" width="980" height="600" font-family="Helvetica, Arial, sans-serif">
+  <title>Audio output filter schematic</title>
+  <rect width="980" height="600" fill="#ffffff"/>
+  <style>
+    .w  { stroke:#1a1a1a; stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .box{ stroke:#1a1a1a; stroke-width:2; fill:#f4f6f8; }
+    .lbl{ font-size:15px; fill:#1a1a1a; }
+    .pin{ font-size:13px; fill:#1a1a1a; }
+    .val{ font-size:14px; fill:#1a1a1a; font-weight:bold; }
+    .ttl{ font-size:20px; fill:#1a1a1a; font-weight:bold; }
+    .note{ font-size:14px; fill:#333; }
+    .dim{ font-size:12px; fill:#666; }
+  </style>
+
+  <text x="30" y="38" class="ttl">Audio output filter: RX (GPIO3) delta-sigma stream → LM386 module</text>
+
+  <!-- NodeMCU -->
+  <rect x="30" y="70" width="170" height="350" rx="6" class="box"/>
+  <text x="115" y="96" class="lbl" text-anchor="middle" font-weight="bold">NodeMCU</text>
+  <text x="115" y="114" class="dim" text-anchor="middle">ESP8266 @ 160 MHz</text>
+  <text x="190" y="144" class="pin" text-anchor="end">RX / GPIO3</text>
+  <text x="190" y="334" class="pin" text-anchor="end">VIN (5 V USB)</text>
+  <text x="190" y="404" class="pin" text-anchor="end">GND</text>
+
+  <!-- LM386 module -->
+  <rect x="660" y="70" width="190" height="350" rx="6" class="box"/>
+  <text x="755" y="96" class="lbl" text-anchor="middle" font-weight="bold">LM386 module</text>
+  <text x="755" y="114" class="dim" text-anchor="middle">gain ≈ 46 dB</text>
+  <text x="672" y="144" class="pin">IN</text>
+  <text x="672" y="334" class="pin">VCC</text>
+  <text x="672" y="404" class="pin">GND</text>
+  <text x="838" y="224" class="pin" text-anchor="end">OUT</text>
+
+  <!-- speaker on module output -->
+  <path class="w" d="M850 210 H885 M850 250 H885"/>
+  <rect x="885" y="200" width="16" height="60" class="w"/>
+  <path class="w" d="M901 200 L935 172 V288 L901 260"/>
+  <text x="912" y="312" class="dim" text-anchor="middle">speaker</text>
+
+  <!-- RX -> R1 -> node A -> IN -->
+  <path class="w" d="M200 140 H270"/>
+  <path class="w" d="M270 140 l8 -12 l16 24 l16 -24 l16 24 l16 -24 l16 24 l8 -12"/>
+  <path class="w" d="M366 140 H660"/>
+  <text x="318" y="116" class="val" text-anchor="middle">R1  10 kΩ</text>
+  <circle cx="450" cy="140" r="5" fill="#1a1a1a"/>
+  <text x="458" y="132" class="lbl">A</text>
+  <text x="560" y="132" class="dim" text-anchor="middle">≈ 0.30 V p-p audio</text>
+
+  <!-- node A down to R2 and C1 -->
+  <path class="w" d="M450 140 V180 M410 180 H510 M410 180 V200 M510 180 V230"/>
+  <!-- R2 vertical -->
+  <path class="w" d="M410 200 l12 8 l-24 16 l24 16 l-24 16 l24 16 l-24 16 l12 8 V300"/>
+  <text x="380" y="252" class="val" text-anchor="end">R2  1 kΩ</text>
+  <!-- C1 -->
+  <path class="w" d="M486 230 H534 M486 244 H534 M510 244 V300"/>
+  <text x="546" y="236" class="val">C1  22 nF</text>
+  <text x="546" y="254" class="dim">ceramic (code 223)</text>
+  <!-- local grounds -->
+  <path class="w" d="M396 300 H424 M401 307 H419 M406 314 H414"/>
+  <path class="w" d="M496 300 H524 M501 307 H519 M506 314 H514"/>
+
+  <!-- VIN rail -->
+  <path class="w" d="M200 330 H660"/>
+  <!-- GND rail -->
+  <path class="w" d="M200 400 H660"/>
+  <!-- C2 decoupling across VIN/GND at module -->
+  <circle cx="600" cy="330" r="4" fill="#1a1a1a"/>
+  <circle cx="600" cy="400" r="4" fill="#1a1a1a"/>
+  <path class="w" d="M600 330 V356 M578 356 H622 M600 372 V400"/>
+  <path d="M578 366 Q600 376 622 366" class="w"/>
+  <text x="566" y="352" class="lbl" text-anchor="end">+</text>
+  <text x="532" y="372" class="val" text-anchor="end">C2  100 µF</text>
+  <text x="532" y="390" class="dim" text-anchor="end">electrolytic, ≥ 10 V, at module</text>
+  <!-- rail ground symbol -->
+  <circle cx="300" cy="400" r="4" fill="#1a1a1a"/>
+  <path class="w" d="M300 400 V418 M286 418 H314 M291 425 H309 M296 432 H304"/>
+
+  <!-- notes -->
+  <line x1="30" y1="462" x2="950" y2="462" stroke="#ccc" stroke-width="1"/>
+  <text x="30" y="490" class="note"><tspan font-weight="bold">Divider:</tspan> R2 / (R1 + R2) = 1 k / 11 k = 0.091 → 3.3 V logic becomes ≈ 0.30 V p-p at the LM386 input.</text>
+  <text x="30" y="515" class="note"><tspan font-weight="bold">Low-pass:</tspan> f<tspan baseline-shift="sub" font-size="11">c</tspan> = 1 / (2π · (R1 ∥ R2) · C1) = 1 / (2π · 909 Ω · 22 nF) ≈ 8.0 kHz. Removes the 1.024 Mbit/s carrier (32 kHz × 32).</text>
+  <text x="30" y="540" class="note"><tspan font-weight="bold">C1 alternatives:</tspan> 2 × 10 nF in parallel (8.8 kHz) · 10 nF (17.5 kHz) · 100 nF with R1 = 2.2 kΩ, R2 = 220 Ω (7.2 kHz).</text>
+  <text x="30" y="565" class="note"><tspan font-weight="bold">C2</tspan> keeps the amplifier's current spikes off the shared 5 V / 3.3 V supply (the OLED shares it).</text>
+</svg>

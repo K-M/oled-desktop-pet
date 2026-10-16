@@ -8,8 +8,9 @@
 | 1 | Speaker module | LM386 amplifier with speaker | 4–5.5 V supply |
 | 1 | Resistor | 10 kΩ, 1/4 W | Audio series resistor |
 | 1 | Resistor | 1 kΩ, 1/4 W | Audio divider to ground |
-| 1 | Capacitor | 10–22 nF ceramic (code 103 / 223) | Audio low-pass; see WIRING.md |
-| 1 | Capacitor | 100 µF, ≥ 10 V electrolytic | Amplifier supply decoupling |
+| 1 | Capacitor | 22 nF ceramic (code 223) | Audio low-pass (C1); alternatives in WIRING.md |
+| 1 | Capacitor | 100 µF, ≥ 10 V electrolytic | Amplifier supply decoupling (C2) |
 | — | Hook-up wire | Dupont jumpers or soldered | |
-| 1 | Enclosure | 3D-printed base, lid | See `enclosure/` |
+| 1 | Enclosure | 3D-printed body + lid | See `enclosure/` |
+| 12 | Screws | Lid (4), touch sensor (4), display bezel (4) | |
 | 1 | USB cable | Micro-USB | Power and flashing |

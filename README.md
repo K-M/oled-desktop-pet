@@ -3,11 +3,12 @@
 A small, fully offline desktop pet: animated eyes on a 1.3" OLED that drift through moods on their own,
 light up when you pet a hidden touch pad, and start sulking (and asking out loud) when ignored.
 
-<!-- MEDIA: hero photo -->
 ![Desktop pet](docs/media/hero.jpg)
 
-<!-- MEDIA: demo video / GIF -->
-**Demo:** see [`docs/media/demo.gif`](docs/media/demo.gif)
+| Petting: glee + purr | Mute: hold 5 s |
+|---|---|
+| ![Petting](docs/media/petting.gif) | ![Mute toggle](docs/media/mute.gif) |
+| [▶ video with sound](docs/media/petting.mp4) | [▶ video with sound](docs/media/mute.mp4) |
 
 ## Features
 
@@ -37,13 +38,12 @@ light up when you pet a hidden touch pad, and start sulking (and asking out loud
 | 1.3" OLED, 128×64, **SH1106**, 4-wire SPI | 7-pin module |
 | Adafruit AT42QT1010 capacitive touch breakout ([#1374](https://www.adafruit.com/product/1374)) | Mounted against the inside of the lid |
 | LM386 speaker module | Powered from 5 V |
-| 10 kΩ, 1 kΩ resistors; 10–22 nF ceramic capacitor; 100 µF electrolytic | Audio filter and amp decoupling |
-| 3D-printed enclosure | See [`hardware/enclosure`](hardware/enclosure) |
+| 10 kΩ, 1 kΩ resistors; 22 nF ceramic; 100 µF electrolytic | Audio filter and amp decoupling |
+| 3D-printed enclosure | 70 × 74 × 48 mm; STL and Fusion source in [`hardware/enclosure`](hardware/enclosure) |
 
-Full list: [`hardware/BOM.md`](hardware/BOM.md). Wiring: [`hardware/WIRING.md`](hardware/WIRING.md).
+Full list: [`hardware/BOM.md`](hardware/BOM.md). Wiring and pin map: [`hardware/WIRING.md`](hardware/WIRING.md).
 
-<!-- MEDIA: internals photo -->
-![Inside the enclosure](docs/media/internals.jpg)
+![Audio filter schematic](hardware/audio_filter_schematic.png)
 
 ## Build and flash
 
@@ -99,8 +99,8 @@ aspirated "P" (`P/HEH5T, MIY4`) made "pet" intelligible. Regenerate with
 firmware/desktop_pet/   Arduino sketch (eyes engine, PetAudio, behaviour, config)
 tests/                  Bring-up sketches (display, speaker)
 tools/sam_render/       Host renderer that regenerates pet_me.h from SAM
-hardware/               Wiring, bill of materials, enclosure files
-docs/media/             Photos, demo video, audio sample
+hardware/               Wiring, schematic, bill of materials, enclosure (STL + Fusion)
+docs/media/             Photos, demo videos, "pet me" audio sample
 ```
 
 ## Credits and license
